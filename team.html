@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meet the Team | Scholars Trust</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #f6f8fa;
+      color: #22223b;
+      scroll-behavior: smooth;
+    }
+    .navbar {
+      background: #fff;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 80px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: box-shadow 0.3s;
+    }
+    .navbar .logo img {
+      height: 60px;
+      width: auto;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+    .nav-links a {
+      color: #2d3a4a;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-links a:after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: #2e5bff;
+      transition: width .3s;
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+    }
+    .nav-links a:hover {
+      color: #2e5bff;
+    }
+    .nav-links a:hover:after {
+      width: 100%;
+    }
+    .team-section {
+      background: #fff;
+      padding: 80px 0 60px 0;
+      text-align: center;
+      position: relative;
+    }
+    .team-section h2 {
+      font-size: 2.7rem;
+      font-weight: 700;
+      color: #2d3a4a;
+      margin-bottom: 40px;
+      letter-spacing: 2px;
+      animation: fadeInUp 1s;
+    }
+    .team-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 36px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .member-card {
+      background: #f6f8fa;
+      border-radius: 24px;
+      box-shadow: 0 4px 24px rgba(46,91,255,0.08);
+      padding: 32px 24px 24px 24px;
+      width: 260px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: fadeInUp 1.2s;
+    }
+    .member-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 12px 40px rgba(46,91,255,0.13);
+    }
+    .member-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: contain;
+      border-radius: 24px;
+      margin-bottom: 18px;
+      border: none;
+      box-shadow: 0 2px 12px rgba(46,91,255,0.08);
+      background: #fff;
+      display: block;
+    }
+    .member-card h3 {
+      margin: 0 0 6px 0;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #2e5bff;
+      letter-spacing: 1px;
+    }
+    .member-card p {
+      margin: 0;
+      font-size: 1rem;
+      color: #4a5568;
+      font-weight: 500;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    @media (max-width: 900px) {
+      .team-grid {
+        gap: 18px;
+      }
+      .member-card {
+        width: 90vw;
+        min-width: 220px;
+        max-width: 340px;
+      }
+      .navbar {
+        padding: 0 16px;
+      }
+    }
+    @media (max-width: 600px) {
+      .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 0;
+      }
+      .nav-links {
+        gap: 12px;
+      }
+      .team-section h2 {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <img src="images/newlogo.png" alt="Scholars Trust Logo" />
+    </div>
+    <nav class="nav-links">
+      <a href="main.html">Home</a>
+      <a href="aboutus.html">About</a>
+      <a href="team.html">Team</a>
+      <a href="events.html">Events</a>
+      <a href="contactus.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="team-section" id="team">
+    <h2>Meet the Team</h2>
+    <div class="team-grid">
+      <div class="member-card">
+        <img src="images/devangkhanna.jpeg" alt="Devang Khanna">
+        <h3>Devang Khanna</h3>
+        <p>President</p>
+      </div>
+      <div class="member-card">
+        <img src="images/arushi.png" alt="Arushi Gulati">
+        <h3>Arushi Gulati</h3>
+        <p>Branch Director</p>
+      </div>
+      <div class="member-card">
+        <img src="images/neev.png" alt="Neev Umesh">
+        <h3>Neev Umesh</h3>
+        <p>Vice-President</p>
+      </div>
+      <div class="member-card">
+        <img src="images/nandana.png" alt="Nandana Nair">
+        <h3>Nandana Nair</h3>
+        <p>Communications Director</p>
+      </div>
+      <div class="member-card">
+        <img src="images/shohaima.png" alt="Shohaima Akhtar">
+        <h3>Shohaima Akhtar</h3>
+        <p>Secretary</p>
+      </div>
+      <div class="member-card">
+        <img src="images/joudy.png" alt="Joudy Ramy">
+        <h3>Joudy Ramy</h3>
+        <p>Head of Member Relations</p>
+      </div>
+      <div class="member-card">
+        <img src="images/yashika.png" alt="Yashika Paryani">
+        <h3>Yashika Paryani</h3>
+        <p>Head of Graphic Design</p>
+      </div>
+      <div class="member-card">
+        <img src="images/shivani.png" alt="Shivani Hebbar">
+        <h3>Shivani Hebbar</h3>
+        <p>Head of Marketing</p>
+      </div>
+      <div class="member-card">
+        <img src="images/gokulshenoy.jpg" alt="Gokul Shenoy">
+        <h3>Gokul Shenoy</h3>
+        <p>Website Manager</p>
+      </div>
+    </div>
+  </section>
+</body>

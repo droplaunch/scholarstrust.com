@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us | Scholars Trust UAE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #f6f8fa;
+      color: #22223b;
+      scroll-behavior: smooth;
+    }
+    .navbar {
+      background: #fff;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 80px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: box-shadow 0.3s;
+    }
+    .navbar .logo img {
+      height: 60px;
+      width: auto;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+    .nav-links a {
+      color: #2d3a4a;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-links a:after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: #2e5bff;
+      transition: width .3s;
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+    }
+    .nav-links a:hover {
+      color: #2e5bff;
+    }
+    .nav-links a:hover:after {
+      width: 100%;
+    }
+    .about-hero {
+      background: linear-gradient(120deg, #eaf0fb 0%, #f6f8fa 100%);
+      padding: 64px 0 32px 0;
+      text-align: center;
+    }
+    .about-hero h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #2e5bff;
+      margin-bottom: 18px;
+      letter-spacing: 2px;
+      animation: fadeInUp 1s;
+    }
+    .about-hero p {
+      font-size: 1.25rem;
+      color: #4a5568;
+      max-width: 700px;
+      margin: 0 auto 24px auto;
+      line-height: 1.7;
+      animation: fadeInUp 1.2s;
+    }
+    .about-section {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 4px 24px rgba(46,91,255,0.08);
+      padding: 48px 32px 40px 32px;
+      margin-top: -32px;
+      margin-bottom: 48px;
+      animation: fadeInUp 1.3s;
+    }
+    .about-section h2 {
+      color: #2e5bff;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+      letter-spacing: 1px;
+    }
+    .about-section p, .about-section ul {
+      font-size: 1.13rem;
+      color: #22223b;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+    .about-section ul {
+      padding-left: 22px;
+      margin-bottom: 18px;
+    }
+    .about-section li {
+      margin-bottom: 8px;
+    }
+    .about-social {
+      text-align: center;
+      margin-top: 32px;
+    }
+    .about-social a {
+      display: inline-block;
+      background: #2e5bff;
+      color: #fff;
+      font-weight: 600;
+      padding: 12px 32px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: background 0.2s;
+      margin: 0 8px;
+    }
+    .about-social a:hover {
+      background: #6c63ff;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    @media (max-width: 700px) {
+      .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 10px;
+      }
+      .logo img {
+        width: 100px;
+        height: 40px;
+      }
+      .nav-links {
+        gap: 12px;
+      }
+      .about-section {
+        padding: 24px 8px 24px 8px;
+      }
+      .about-hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <img src="images/newlogo.png" alt="Scholars Trust Logo" />
+    </div>
+    <nav class="nav-links">
+      <a href="main.html">Home</a>
+      <a href="aboutus.html">About</a>
+      <a href="team.html">Team</a>
+      <a href="events.html">Events</a>
+      <a href="contactus.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="about-hero">
+    <h1>About Scholars' Trust UAE</h1>
+    <p>
+      Scholars' Trust UAE is a youth-led, non-profit organization dedicated to empowering students across the UAE through mentorship, academic support, and leadership opportunities. Our mission is to create a vibrant community where students can connect, learn, and grow together—both academically and personally.
+    </p>
+  </section>
+
+  <section class="about-section">
+    <h2>Who We Are</h2>
+    <p>
+      Founded by passionate students, Scholars' Trust UAE brings together high schoolers and university students from diverse backgrounds. We believe in the power of peer support and the importance of sharing knowledge, experiences, and opportunities to help each other succeed.
+    </p>
+
+    <h2>What We Do</h2>
+    <ul>
+      <li><strong>Mentorship:</strong> We connect students with mentors who guide them through academic choices, university applications, and personal development.</li>
+      <li><strong>Workshops & Events:</strong> We organize interactive workshops, webinars, and camps on topics like university admissions, career planning, leadership, and more.</li>
+      <li><strong>Community:</strong> Our platform is a safe space for students to ask questions, share resources, and build lasting friendships.</li>
+      <li><strong>Opportunities:</strong> We regularly share internships, competitions, and volunteering opportunities to help students expand their horizons.</li>
+    </ul>
+
+    <h2>Our Vision</h2>
+    <p>
+      To foster a supportive and inclusive environment where every student in the UAE can access the guidance, resources, and inspiration they need to reach their full potential.
+    </p>
+
+    <h2>Get Involved</h2>
+    <p>
+      Whether you're a student looking for guidance, a mentor eager to give back, or an organization interested in collaborating, Scholars' Trust UAE welcomes you! Join our growing community and be part of a movement that uplifts and empowers youth across the country.
+    </p>
+
+    <div class="about-social">
+      <a href="https://www.instagram.com/scholars_trust_uae/" target="_blank">Follow us on Instagram</a>
+      <a href="https://www.linkedin.com/company/scholars-trust-uae/" target="_blank">Connect on LinkedIn</a>
+      <a href="https://www.facebook.com/scholars.trust.uae/" target="_blank">Like us on Facebook</a>
+    </div>
+  </section>
+</body>
+</html>

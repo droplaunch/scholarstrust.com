@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us | Scholars Trust</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+      color: #22223b;
+      scroll-behavior: smooth;
+    }
+    .navbar {
+      background: #fff;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 80px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: box-shadow 0.3s;
+    }
+    .navbar .logo img {
+      height: 60px;
+      width: auto;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+    .nav-links a {
+      color: #2d3a4a;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-links a:after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: #2e5bff;
+      transition: width .3s;
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+    }
+    .nav-links a:hover {
+      color: #2e5bff;
+    }
+    .nav-links a:hover:after {
+      width: 100%;
+    }
+    .contact-main {
+      max-width: 1400px;
+      margin: 48px auto 0 auto;
+      padding: 0 24px 48px 24px;
+    }
+    .contact-title {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #3730a3;
+      margin-bottom: 48px;
+      letter-spacing: 2px;
+      text-shadow: 0 2px 8px #c7d2fe;
+      text-align: left;
+      animation: fadeInUp 1s;
+    }
+    .contact-flex {
+      display: flex;
+      gap: 60px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: flex-start;
+      animation: fadeInUp 1.2s;
+    }
+    .contact-form-section {
+      flex: 2;
+      min-width: 340px;
+      max-width: 600px;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 4px 24px rgba(46,91,255,0.08);
+      padding: 40px 32px 32px 32px;
+      margin-bottom: 24px;
+      animation: fadeInUp 1.3s;
+    }
+    .contact-form-section h2 {
+      color: #2e5bff;
+      font-size: 1.5rem;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .contact-form-row {
+      display: flex;
+      gap: 18px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      background: #e0e7ff;
+      color: #22223b;
+      border: none;
+      border-radius: 18px;
+      padding: 18px;
+      font-size: 1.1rem;
+      font-family: inherit;
+      width: 100%;
+      resize: none;
+      margin-bottom: 0;
+      outline: none;
+      transition: box-shadow 0.2s;
+      box-shadow: 0 2px 8px #c7d2fe;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      box-shadow: 0 0 0 2px #2e5bff;
+    }
+    .contact-form textarea {
+      min-height: 140px;
+      max-height: 260px;
+    }
+    .contact-form button {
+      background: #4fffd2;
+      color: #22223b;
+      border: none;
+      border-radius: 14px;
+      padding: 18px 0;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.2s, color 0.2s;
+      box-shadow: 0 2px 8px #c7d2fe;
+    }
+    .contact-form button:hover {
+      background: #2e5bff;
+      color: #fff;
+    }
+    .contact-side {
+      flex: 1;
+      min-width: 320px;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 4px 24px rgba(46,91,255,0.08);
+      padding: 40px 32px 32px 32px;
+      margin-bottom: 24px;
+      animation: fadeInUp 1.3s;
+    }
+    .contact-side h2 {
+      color: #2e5bff;
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+    .contact-info, .contact-social {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .contact-info-row, .contact-social-row {
+      display: flex;
+      align-items: center;
+      background: #e0e7ff;
+      color: #22223b;
+      border-radius: 6px;
+      padding: 12px 18px;
+      font-size: 1.1rem;
+      gap: 12px;
+      margin-bottom: 0;
+      box-shadow: 0 2px 8px #c7d2fe;
+    }
+    .contact-info-row svg, .contact-social-row svg {
+      width: 22px;
+      height: 22px;
+      fill: #6366f1;
+      flex-shrink: 0;
+    }
+    .contact-social-row a {
+      color: #22223b;
+      text-decoration: none;
+      font-size: 1.1rem;
+      margin-left: 8px;
+      transition: color 0.2s;
+    }
+    .contact-social-row a:hover {
+      color: #2e5bff;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    @media (max-width: 900px) {
+      .contact-flex {
+        flex-direction: column;
+        gap: 40px;
+      }
+      .contact-main {
+        padding: 0 8px 48px 8px;
+      }
+      .contact-title {
+        font-size: 2rem;
+      }
+    }
+    @media (max-width: 700px) {
+      .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 10px;
+      }
+      .logo img {
+        width: 100px;
+        height: 40px;
+      }
+      .nav-links {
+        gap: 12px;
+      }
+      .contact-section,
+      .contact-side {
+        padding: 24px 8px 24px 8px;
+      }
+      .contact-title {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <img src="images/newlogo.png" alt="Scholars Trust Logo" />
+    </div>
+    <nav class="nav-links">
+      <a href="main.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="team.html">Team</a>
+      <a href="events.html">Events</a>
+      <a href="contactus.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="contact-main">
+    <div class="contact-title">Let's Connect!</div>
+    <div class="contact-flex">
+      <section class="contact-form-section">
+        <h2>Message Me</h2>
+        <form class="contact-form" autocomplete="off">
+          <div class="contact-form-row">
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="Email" required>
+          </div>
+          <textarea placeholder="Write a message..." required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </section>
+      <aside class="contact-side">
+        <div>
+          <h2>Contact</h2>
+          <div class="contact-info">
+            <div class="contact-info-row">
+              <!-- Email Icon -->
+              <svg viewBox="0 0 24 24"><path d="M2 4h20v16H2V4zm2 2v12h16V6H4zm8 5.5L4.5 6h15L12 11.5z"/></svg>
+              scholarstrustuae@gmail.com
+            </div>
+            <div class="contact-info-row">
+              <!-- Phone Icon -->
+              <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.21.49 2.53.76 3.88.76a1 1 0 011 1V20a1 1 0 01-1 1C10.07 21 3 13.93 3 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.35.27 2.67.76 3.88a1 1 0 01-.21 1.11l-2.2 2.2z"/></svg>
+              +971 50 948 7098
+            </div>
+          </div>
+        </div>
+        <div>
+          <h2>Social Media</h2>
+          <div class="contact-social">
+            <div class="contact-social-row">
+              <!-- Twitter Icon -->
+              <svg viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.47.69a4.3 4.3 0 001.88-2.37 8.59 8.59 0 01-2.72 1.04A4.28 4.28 0 0016.11 4c-2.37 0-4.29 1.92-4.29 4.29 0 .34.04.67.11.99C7.69 9.13 4.07 7.38 1.64 4.7c-.37.64-.58 1.39-.58 2.19 0 1.51.77 2.84 1.94 3.62a4.28 4.28 0 01-1.94-.54v.05c0 2.11 1.5 3.87 3.5 4.27-.37.1-.76.16-1.16.16-.28 0-.55-.03-.81-.08.55 1.72 2.16 2.97 4.07 3a8.6 8.6 0 01-5.33 1.84c-.35 0-.7-.02-1.04-.06A12.13 12.13 0 007.29 21c7.55 0 11.68-6.26 11.68-11.68 0-.18-.01-.36-.02-.54A8.18 8.18 0 0024 4.59a8.36 8.36 0 01-2.54.7z"/></svg>
+              <a href="https://twitter.com/" target="_blank">Twitter</a>
+            </div>
+            <div class="contact-social-row">
+              <!-- Framer Icon -->
+              <svg viewBox="0 0 24 24"><path d="M6 2h12a2 2 0 012 2v16a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2zm0 2v4h12V4H6zm0 6v4h12v-4H6zm0 6v4h12v-4H6z"/></svg>
+              <a href="https://framer.com/" target="_blank">Framer</a>
+            </div>
+            <div class="contact-social-row">
+              <!-- Instagram Icon -->
+              <svg viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 2A3.75 3.75 0 004 7.75v8.5A3.75 3.75 0 007.75 20h8.5A3.75 3.75 0 0020 16.25v-8.5A3.75 3.75 0 0016.25 4h-8.5zm4.25 2.5a5.25 5.25 0 110 10.5 5.25 5.25 0 010-10.5zm0 2A3.25 3.25 0 1015.25 12 3.25 3.25 0 0012 8.5zm5.5-.75a1 1 0 11-1 1 1 1 0 011-1z"/></svg>
+              <a href="https://www.instagram.com/scholarstrustuae/" target="_blank">Instagram</a>
+            </div>
+            <div class="contact-social-row">
+              <!-- Dribbble Icon -->
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm6.93 6.36a8.01 8.01 0 012.02 4.31c-.26-.04-2.79-.39-5.68-.17-.06-.13-.12-.26-.19-.39-.08-.16-.16-.32-.25-.48 4.13-1.63 5.8-3.95 6.1-4.27zm-1.44-1.53c-.28.36-1.5 1.81-5.36 3.18-1.7-3.13-3.54-5.13-3.8-5.41A8.02 8.02 0 0112 4c1.98 0 3.8.72 5.24 1.92zm-6.7-1.23c.32.34 2.09 2.29 3.75 5.33-6.02 1.62-8.01 4.87-8.18 5.13A8.01 8.01 0 013.07 8.36zm-2.02 6.31c.22-.35 2.12-3.13 8.01-4.7.16.29.31.58.46.88.07.14.14.28.21.42-7.16 2.01-6.97 6.06-6.96 6.23a8.03 8.03 0 01-1.72-2.83zm2.22 4.06c-.01-.13-.13-3.36 6.52-5.26.19.37.37.74.54 1.12.05.11.1.22.15.33-6.34 1.65-6.18 5.16-6.17 5.3a8.03 8.03 0 01-.99-1.49zm2.84 2.7c.01-.13.23-2.62 5.61-3.92.13.28.25.56.36.85.04.1.08.2.12.3-5.18 1.29-5.13 3.6-5.13 3.62A8.01 8.01 0 0112 20a7.98 7.98 0 01-5.89-2.5zm7.14 1.98c0-.02.01-1.82 4.11-2.91a8.01 8.01 0 01-4.11 2.91zm5.13-4.06c-.18-.02-2.45-.23-5.02.36.09-.21.18-.42.26-.63.04-.1.08-.2.12-.3 2.97-.61 5.13-.23 5.19-.22a8.01 8.01 0 01-.55.79zm1.13-2.13c-.27-.04-2.09-.28-4.46-.13.02-.07.05-.14.07-.21.07-.19.13-.38.19-.57 2.57-.13 4.44.13 4.47.13a8.01 8.01 0 01-.27.78z"/></svg>
+              <a href="https://dribbble.com/" target="_blank">Dribbble</a>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>

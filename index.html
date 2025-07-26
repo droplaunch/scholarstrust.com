@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scholars Trust</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: linear-gradient(120deg, #6cb5fd 0%, #6e45e2 100%);
+      color: #fff;
+    }
+    .intro-bg {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      top: 0; left: 0;
+      z-index: 0;
+      background: radial-gradient(circle at 60% 40%, #fff3 0%, #6cb5fd 80%);
+      animation: bgFadeIn 2s;
+    }
+    @keyframes bgFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .intro-center {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 2;
+    }
+    .grad-cap {
+      width: 180px;
+      height: 160px;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: capPopIn 1.2s 0.2s forwards, capFloat 2.5s 1.4s infinite alternate ease-in-out;
+      filter: drop-shadow(0 8px 32px #6e45e2aa);
+    }
+    @keyframes capPopIn {
+      0% { transform: scale(0.7) rotate(-20deg); opacity: 0; }
+      70% { transform: scale(1.1) rotate(8deg); opacity: 1; }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+    @keyframes capFloat {
+      from { transform: translateY(0); }
+      to { transform: translateY(-18px); }
+    }
+    .welcome-text {
+      font-size: 2.5rem;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #fff;
+      text-shadow: 0 4px 24px #6e45e2aa;
+      opacity: 0;
+      animation: textFadeIn 1.2s 1.1s forwards;
+      margin-bottom: 18px;
+      background: linear-gradient(90deg, #fff 60%, #6cb5fd 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    @keyframes textFadeIn {
+      from { opacity: 0; transform: translateY(30px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .subtitle {
+      font-size: 1.2rem;
+      color: #eaf0fb;
+      opacity: 0;
+      animation: textFadeIn 1.2s 1.7s forwards;
+      margin-bottom: 32px;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+    .skip-btn {
+      background: linear-gradient(90deg, #2e5bff 60%, #6c63ff 100%);
+      color: #fff;
+      border: none;
+      padding: 12px 32px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 16px rgba(46,91,255,0.12);
+      transition: background 0.3s, transform 0.2s;
+      z-index: 10;
+      opacity: 0;
+      animation: btnFadeIn 1s 2.2s forwards;
+    }
+    .skip-btn:hover {
+      background: linear-gradient(90deg, #6c63ff 0%, #2e5bff 100%);
+      transform: translateY(-2px) scale(1.04);
+    }
+    @keyframes btnFadeIn {
+      from { opacity: 0; transform: translateY(20px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .fade-out {
+      animation: fadeOut 1.2s forwards;
+    }
+    @keyframes fadeOut {
+      to { opacity: 0; pointer-events: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="intro-bg"></div>
+  <div class="intro-center" id="intro-wrapper">
+    <img src="images/cap.png" alt="Graduation Cap" class="grad-cap" />
+    <div class="welcome-text" id="welcome">Welcome to Scholars Trust UAE</div>
+    <div class="subtitle">Empowering youth through education, leadership, and opportunity.</div>
+    <button class="skip-btn" onclick="triggerFade()">Enter Site</button>
+  </div>
+  <script>
+    function triggerFade() {
+      document.getElementById('intro-wrapper').classList.add('fade-out');
+      document.querySelector('.intro-bg').classList.add('fade-out');
+      setTimeout(() => {
+        window.location.href = "main.html";
+      }, 1100);
+    }
+    // Optional: allow Enter key to skip
+    document.addEventListener('keydown', function(e) {
+      if (e.key === "Enter") triggerFade();
+    });
+  </script>
+</body>
+</html>

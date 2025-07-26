@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scholars Trust</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #f6f8fa;
+      color: #22223b;
+      scroll-behavior: smooth;
+    }
+    .navbar {
+      background: #fff;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 80px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: box-shadow 0.3s;
+    }
+    .navbar .logo img {
+      height: 60px;
+      width: auto;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+    .nav-links a {
+      color: #2d3a4a;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-links a:after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: #2e5bff;
+      transition: width .3s;
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+    }
+    .nav-links a:hover {
+      color: #2e5bff;
+    }
+    .nav-links a:hover:after {
+      width: 100%;
+    }
+    .hero {
+      background: linear-gradient(120deg, #eaf0fb 0%, #f6f8fa 100%);
+      padding: 100px 0 60px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: #2d3a4a;
+      margin-bottom: 18px;
+      letter-spacing: 2px;
+      animation: fadeInUp 1s;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      color: #4a5568;
+      margin-bottom: 32px;
+      animation: fadeInUp 1.2s;
+    }
+    .hero .cta-button {
+      padding: 0.9rem 2.2rem;
+      font-size: 1.1rem;
+      color: #fff;
+      background: linear-gradient(90deg, #2e5bff 60%, #6c63ff 100%);
+      border: none;
+      border-radius: 30px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(46,91,255,0.08);
+      transition: background 0.3s, transform 0.2s;
+      animation: fadeInUp 1.4s;
+    }
+    .hero .cta-button:hover {
+      background: linear-gradient(90deg, #6c63ff 0%, #2e5bff 100%);
+      transform: translateY(-2px) scale(1.04);
+    }
+    .hero img {
+      width: 320px;
+      max-width: 90vw;
+      margin: 32px auto 0 auto;
+      display: block;
+      border-radius: 30px;
+      box-shadow: 0 8px 32px rgba(46,91,255,0.08);
+      animation: fadeInUp 1.6s;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    /* Meet the Team Section */
+    .team-section {
+      background: #fff;
+      padding: 80px 0 60px 0;
+      text-align: center;
+      position: relative;
+    }
+    .team-section h2 {
+      font-size: 2.7rem;
+      font-weight: 700;
+      color: #2d3a4a;
+      margin-bottom: 40px;
+      letter-spacing: 2px;
+      animation: fadeInUp 1s;
+    }
+    .team-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 36px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .member-card {
+      background: #f6f8fa;
+      border-radius: 24px;
+      box-shadow: 0 4px 24px rgba(46,91,255,0.08);
+      padding: 32px 24px 24px 24px;
+      width: 260px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: fadeInUp 1.2s;
+    }
+    .member-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 12px 40px rgba(46,91,255,0.13);
+    }
+    .member-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: contain;
+      border-radius: 24px;
+      margin-bottom: 18px;
+      border: none;
+      box-shadow: 0 2px 12px rgba(46,91,255,0.08);
+      background: #fff;
+      display: block;
+    }
+    .member-card h3 {
+      margin: 0 0 6px 0;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #2e5bff;
+      letter-spacing: 1px;
+    }
+    .member-card p {
+      margin: 0;
+      font-size: 1rem;
+      color: #4a5568;
+      font-weight: 500;
+    }
+    /* About Section */
+    .about-section {
+      background: linear-gradient(120deg, #eaf0fb 0%, #f6f8fa 100%);
+      padding: 80px 0 60px 0;
+      text-align: center;
+    }
+    .about-section h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #2d3a4a;
+      margin-bottom: 24px;
+      letter-spacing: 1px;
+    }
+    .about-section p {
+      font-size: 1.15rem;
+      color: #4a5568;
+      max-width: 700px;
+      margin: 0 auto 24px auto;
+      line-height: 1.7;
+    }
+    /* Events Section */
+    .events-section {
+      background: #fff;
+      padding: 80px 0 60px 0;
+      text-align: center;
+    }
+    .events-section h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #2d3a4a;
+      margin-bottom: 24px;
+      letter-spacing: 1px;
+    }
+    .events-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 32px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .event-card {
+      background: #f6f8fa;
+      border-radius: 20px;
+      box-shadow: 0 4px 24px rgba(46,91,255,0.08);
+      padding: 28px 22px 22px 22px;
+      width: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: fadeInUp 1.2s;
+    }
+    .event-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 12px 40px rgba(46,91,255,0.13);
+    }
+    .event-card h3 {
+      margin: 0 0 8px 0;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #2e5bff;
+    }
+    .event-card p {
+      margin: 0 0 8px 0;
+      font-size: 1rem;
+      color: #4a5568;
+    }
+    .event-card .event-date {
+      font-size: 0.95rem;
+      color: #6c63ff;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    /* Past Events Section */
+    .past-events-section {
+      background: #f6f8fa;
+      padding: 80px 0 60px 0;
+      text-align: center;
+    }
+    .past-events-section h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #2d3a4a;
+      margin-bottom: 24px;
+      letter-spacing: 1px;
+    }
+    .past-events-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 32px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .past-event-card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 24px rgba(46,91,255,0.08);
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .past-event-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 12px 40px rgba(46,91,255,0.13);
+    }
+    .past-event-img-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      overflow: hidden;
+      border-radius: 20px 20px 0 0;
+    }
+    .past-event-img-wrap img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px 20px 0 0;
+    }
+    .past-event-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(46, 91, 255, 0.1);
+      border-radius: 20px 20px 0 0;
+    }
+    .past-event-details {
+      padding: 16px;
+      text-align: left;
+    }
+    .past-event-details h3 {
+      margin: 0 0 8px 0;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #2d3a4a;
+    }
+    .past-event-details .past-event-date {
+      font-size: 0.95rem;
+      color: #6c63ff;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .past-event-details p {
+      margin: 0;
+      font-size: 1rem;
+      color: #4a5568;
+      line-height: 1.5;
+    }
+    /* Contact Section */
+    .contact-section {
+      background: linear-gradient(120deg, #eaf0fb 0%, #f6f8fa 100%);
+      padding: 80px 0 60px 0;
+      text-align: center;
+    }
+    .contact-section h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #2d3a4a;
+      margin-bottom: 24px;
+      letter-spacing: 1px;
+    }
+    .contact-icons {
+      display: flex;
+      gap: 36px;
+      align-items: center;
+      justify-content: center;
+      margin: 32px 0 0 0;
+    }
+    .contact-icons a img {
+      width: 48px;
+      height: 48px;
+      transition: transform 0.2s;
+    }
+    .contact-icons a:hover img {
+      transform: scale(1.15) rotate(-8deg);
+    }
+    .contact-section p {
+      color: #4a5568;
+      font-size: 1.1rem;
+      margin-bottom: 0;
+    }
+    /* Stay Connected Section */
+    .stay-connected-section {
+      background: #a3aac7;
+      padding: 64px 0 32px 0;
+    }
+    .stay-connected-wrapper {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 60px;
+      max-width: 1400px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+    .sc-logo img {
+      width: 180px;
+      height: auto;
+      margin-top: 18px;
+    }
+    .sc-center {
+      flex: 1;
+      min-width: 320px;
+      text-align: center;
+    }
+    .sc-center h2 {
+      font-size: 2.6rem;
+      font-weight: 500;
+      color: #2d3a4a;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+    .sc-center p {
+      font-size: 1.15rem;
+      color: #2d3a4a;
+      margin-bottom: 28px;
+    }
+    .sc-form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 18px;
+    }
+    .sc-form input[type="email"] {
+      padding: 18px 24px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 0;
+      outline: none;
+      width: 320px;
+      background: #fff;
+      color: #22223b;
+      font-family: inherit;
+      border-radius: 8px 0 0 8px;
+    }
+    .sc-form button {
+      padding: 18px 38px;
+      font-size: 1.2rem;
+      background: #5c6cae;
+      color: #fff;
+      border: none;
+      border-radius: 0 32px 32px 0;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .sc-form button:hover {
+      background: #2d3a4a;
+    }
+    .sc-privacy {
+      color: #2d3a4a;
+      font-size: 1rem;
+      margin-top: 16px;
+    }
+    .sc-links {
+      display: flex;
+      gap: 60px;
+      min-width: 220px;
+    }
+    .sc-links h3 {
+      font-size: 2rem;
+      font-weight: 500;
+      color: #2d3a4a;
+      margin-bottom: 12px;
+    }
+    .sc-links a {
+      display: block;
+      color: #2d3a4a;
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+    .sc-links a:hover {
+      color: #5c6cae;
+    }
+    @media (max-width: 900px) {
+      .team-grid, .events-list, .past-events-list {
+        gap: 18px;
+      }
+      .member-card, .event-card, .past-event-card {
+        width: 90vw;
+        min-width: 220px;
+        max-width: 340px;
+      }
+      .navbar {
+        padding: 0 16px;
+      }
+      .stay-connected-wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+      }
+      .sc-links {
+        flex-direction: row;
+        gap: 32px;
+        justify-content: center;
+      }
+      .sc-logo img {
+        margin-bottom: 18px;
+      }
+    }
+    @media (max-width: 600px) {
+      .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 0;
+      }
+      .nav-links {
+        gap: 12px;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .team-section h2, .about-section h2, .events-section h2, .contact-section h2 {
+        font-size: 1.3rem;
+      }
+      .hero img {
+        width: 90vw;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <img src="images/newlogo.png" alt="Scholars Trust Logo" />
+    </div>
+    <nav class="nav-links">
+      <a href="main.html">Home</a>
+      <a href="aboutus.html">About</a>
+      <a href="team.html">Team</a>
+      <a href="events.html">Events</a>
+      <a href="contactus.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <h1>Welcome to Scholars Trust</h1>
+    <p>Empowering youth through education, leadership, and opportunity.</p>
+    <button class="cta-button" onclick="window.location.href='aboutus.html';">Learn More</button>
+    <img src="images/Scholars trust logo with white backgrounf .png" alt="Scholars Trust Logo" />
+  </section>
+<br>
+<br>
+<br>
+<br>
+  <section class="about-section" id="about">
+    <h2>About Us</h2>
+    <p>
+      Scholars Trust is a youth-led non-profit organization dedicated to empowering students through mentorship, leadership, and opportunity. We strive to create a supportive community where young minds can connect, learn, and grow together.
+    </p>
+    <p>
+      Our mission is to bridge the gap between ambition and achievement by providing resources, events, and a network of passionate individuals.
+    </p>
+  </section>
+
+  <section class="team-section" id="team">
+    <h2>Meet the Team</h2>
+    <div class="team-grid">
+      <div class="member-card">
+        <img src="images/devangkhanna.jpeg" alt="Devang Khanna">
+        <h3>Devang Khanna</h3>
+        <p>President</p>
+      </div>
+      <div class="member-card">
+        <img src="images/arushi.png" alt="Arushi Gulati">
+        <h3>Arushi Gulati</h3>
+        <p>Branch Director</p>
+      </div>
+      <div class="member-card">
+        <img src="images/neev.png" alt="Neev Umesh">
+        <h3>Neev Umesh</h3>
+        <p>Vice-President</p>
+      </div>
+      <div class="member-card">
+        <img src="images/nandana.png" alt="Nandana Nair">
+        <h3>Nandana Nair</h3>
+        <p>Communications Director</p>
+      </div>
+      <div class="member-card">
+        <img src="images/shohaima.png" alt="Shohaima Akhtar">
+        <h3>Shohaima Akhtar</h3>
+        <p>Secretary</p>
+      </div>
+      <div class="member-card">
+        <img src="images/joudy.png" alt="Joudy Ramy">
+        <h3>Joudy Ramy</h3>
+        <p>Head of Member Relations</p>
+      </div>
+      <div class="member-card">
+        <img src="images/yashika.png" alt="Yashika Paryani">
+        <h3>Yashika Paryani</h3>
+        <p>Head of Graphic Design</p>
+      </div>
+      <div class="member-card">
+        <img src="images/shivani.png" alt="Shivani Hebbar">
+        <h3>Shivani Hebbar</h3>
+        <p>Head of Marketing</p>
+      </div>
+      <div class="member-card">
+        <img src="images/gokulshenoy.jpg" alt="Gokul Shenoy">
+        <h3>Gokul Shenoy</h3>
+        <p>Website Manager</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="events-section" id="events">
+    <h2>Upcoming Events</h2>
+    <div class="events-list">
+      <div class="event-card">
+        <h3>Career Camp! 🎯</h3>
+        <div class="event-date">September 14th & 15th</div>
+        <p>
+          Dive into hands-on workshops, gain insider tips from experts, and discover how to turn your ambitions into reality!
+        </p>
+        <p>
+          <span class="highlight">🔥</span> Don’t miss out on this opportunity to learn, grow, and connect with like-minded individuals.
+        </p>
+      </div>
+      <div class="event-card">
+        <h3>Deepak Lal - Finance Talk</h3>
+        <div class="event-date">Coming Soon</div>
+        <ul>
+          <li>B.Tech in Petroleum Engineering from IIT Dhanbad</li>
+          <li>Chief Investment Officer in Grey-Sells and Ex-VP, Business Management, Corporate and Investment Banking, First Abu Dhabi Bank</li>
+          <li>Vice President – Corporate Marketing for First Gulf Bank for 5 years</li>
+        </ul>
+        <p>
+          Join Deepak Lal as he shares his journey and insights from over two decades in finance and banking!
+        </p>
+      </div>
+      <!-- Add more event cards as needed -->
+    </div>
+  </section>
+
+  <section class="past-events-section" id="past-events">
+    <h2>Past Events</h2>
+    <div class="past-events-list">
+      <div class="past-event-card">
+        <div class="past-event-img-wrap">
+          <img src="images/elisaworkshop.png" alt="Elisa See Workshop">
+          <div class="past-event-overlay"></div>
+        </div>
+        <div class="past-event-details">
+          <h3>Elisa See Harvard Workshop</h3>
+          <div class="past-event-date">2025</div>
+          <p>
+            Elisa See, incoming Harvard College freshman, shared her journey, IB experience, and tips for achieving a 1600 Digital SAT. She also discussed networking, internships, and college application strategies.
+          </p>
+        </div>
+      </div>
+      <div class="past-event-card">
+        <div class="past-event-img-wrap">
+          <img src="images/senoworkshop.png" alt="Seno SAT Workshop">
+          <div class="past-event-overlay"></div>
+        </div>
+        <div class="past-event-details">
+          <h3>Seno's SAT Training Workshop</h3>
+          <div class="past-event-date">2025</div>
+          <p>
+            Seno Sanjeev led an interactive SAT workshop, focusing on problem-solving, test-taking strategies, and building confidence for standardized testing success.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact">
+    <h2>Contact Us</h2>
+    <p>Connect with us via:</p>
+    <div class="contact-icons">
+      <a href="mailto:scholarstrust@example.com" title="Email">
+        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/2709.png" alt="Email">
+      </a>
+      <a href="https://www.instagram.com/scholars_trust_uae/" target="_blank" title="Instagram">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram">
+      </a>
+      <a href="https://linkedin.com/company/scholarstrust" target="_blank" title="LinkedIn">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn">
+      </a>
+      <a href="https://www.whatsapp.com/channel/0029Vb6WRgJ2f3EFzdT7V63B" target="_blank" title="WhatsApp">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp">
+      </a>
+    </div>
+    <p style="margin-top:32px;">
+      For the latest opportunities and events, join our WhatsApp Channel by clicking on the icon above!
+    </p>
+  </section>
+
+  <section class="stay-connected-section" id="stay-connected">
+         <footer style="text-align: center; padding: 32px 0; color: #fff;">
+    &copy; 2025 Scholars Trust. All rights reserved.<br>Website Designed by <a href="https://www.linkedin.com/in/gokul-sanjeev-shenoy-841158166/" target="_blank" style="color: #fff; text-decoration: underline;">Gokul Shenoy</a>
+  </footer>
+    <div class="stay-connected-wrapper">
+      <div class="sc-logo">
+        <img src="images/newlogo.png" alt="Scholars Trust Logo" />
+      </div>
+      <div class="sc-center">
+        <h2>stay connected</h2>
+        <p>Sign up with your email address to receive news and updates.</p>
+        <form class="sc-form" autocomplete="off">
+          <input type="email" placeholder="Email Address" required>
+          <button type="submit">SIGN UP</button>
+        </form>
+        <div class="sc-privacy">We respect your privacy.</div>
+      </div>
+      <div class="sc-links">
+        <div>
+          <h3>CONTACT</h3>
+          <a href="https://www.instagram.com/scholars_trust_uae/" target="_blank">Instagram</a>
+          <a href="https://www.tiktok.com/@scholarstrust" target="_blank">TikTok</a>
+          <a href="mailto:scholarstrust@example.com">Email</a>
+        </div>
+        <div>
+          <h3>ABOUT</h3>
+          <a href="team.html">Our Team</a>
+          <a href="#about">About Scholars'</a>
+          <a href="">Tutor Program</a>
+      
+    </div>
+  </section>
+
+</body>
+</html>

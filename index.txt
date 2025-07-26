@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scholars Trust</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+  <header class="navbar">
+  <div class="logo"><img src="images/cap.png" style="width: 40px;height: 40px;"">Scholar's Trust</div>
+  <nav class="nav-links" id="navLinks">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#team">Team</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="burger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</header>
+<section class="hero">
+  <div class="hero-section" id="home">
+    <h1>Welcome to Scholars Trust</h1>
+    <img src="images/Scholars trust logo with white backgrounf .png" style="width: 400px;height: 400px;" alt="Graduation Cap" class="grad-cap" />
+    <p>Empowering youth through education, leadership, and opportunity.</p>
+    <button class="cta-button" onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' });">
+  Learn More
+</button>
+
+  </div>
+</section>
+  <section class="about" id="about" data-aos="fade-up">
+
+  </section>
+<section class="team-section" id="team">
+  <h2>Meet the Team</h2>
+  <div class="slider-container">
+    <button class="arrow left" onclick="scrollLeft()">&#10094;</button>
+    <div class="slider" id="slider">
+      <!-- Member Card -->
+      <div class="member-card">
+        <img class="team-photo" src="images/devangkhanna.jpeg" alt="Devang Khanna">
+        <h3>Devang Khanna</h3>
+        <p>President</p>
+      </div>
+      <div class="member-card">
+        <img class="team-photo" src="images/arushi.png" alt="Arushi Gulati">
+        <h3>Arushi Gulati</h3>
+        <p>Branch Director</p>
+      </div>
+      <div class="member-card">
+        <img class="team-photo" src="images/neev.png" alt="Neev Umesh">
+        <h3>Neev Umesh</h3>
+        <p>Vice-President</p>
+      </div>
+      <div class="member-card">
+        <img class="team-photo" src="images/nandana.png" alt="Nandana Nair">
+        <h3>Nandana Nair</h3>
+        <p>Communications Director</p>
+      </div>
+      <div class="member-card">
+        <img class="team-photo" src="images/shohaima.png" alt="Shohaima Akhtar">
+        <h3>Shohaima Akhtar</h3>
+        <p>Secretary</p>
+      </div>
+      <div class="member-card">
+        <img class="team-photo" src="images/joudy.png" alt="Joudy Ramy">
+        <h3>Joudy Ramy</h3>
+        <p>Head of Member Relations</p>
+      </div>
+      <div class="member-card">
+        <img class="team-photo" src="images/yashika.png" alt="Yashika Paryani">
+        <h3>Yashika Paryani</h3>
+        <p>Head of Graphic Design</p>
+      </div>
+      <div class="member-card">
+        <img class="team-photo" src="images/shivani.png" alt="Shivani Hebbar">
+        <h3>Shivani Hebbar</h3>
+        <p>Head of Marketing</p>
+      </div>
+      <div class="member-card">
+        <img class="team-photo" src="images/gokulshenoy.jpg" alt="Gokul Shenoy">
+        <h3>Gokul Shenoy</h3>
+        <p>Website Manager</p>
+      </div>
+    </div>
+    <button class="arrow right" onclick="scrollRight()">&#10095;</button>
+  </div>
+</section>
+
+ 
+
+  <section class="contact" id="contact" data-aos="fade-up">
+  <h2>Contact Us</h2>
+  <br>
+  <div class="airtable-embed">
+    <iframe
+      class="airtable-embed-frame"
+      src="https://airtable.com/embed/your-form-url-here"
+      frameborder="0"
+      onmousewheel=""
+      width="100%"
+      height="600"
+      style="background: transparent; border: 1px solid #ccc; border-radius: 10px;"
+    ></iframe>
+  </div>
+</section>
+
+  <footer>
+    <p>&copy; 2025 Scholars Trust. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
+<script>
+  const slider = document.getElementById('slider');
+
+  function scrollLeft() {
+    slider.scrollBy({ left: -300, behavior: 'smooth' });
+  }
+
+  function scrollRight() {
+    slider.scrollBy({ left: 300, behavior: 'smooth' });
+  }
+
+  // Auto-scroll every 4 seconds
+  setInterval(() => {
+    if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth) {
+      slider.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      slider.scrollBy({ left: 300, behavior: 'smooth' });
+    }
+  }, 4000);
+</script>
+
+</body>
+</html>

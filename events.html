@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Events | Scholars Trust</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', Arial, sans-serif;
+      background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+      color: #22223b;
+      scroll-behavior: smooth;
+    }
+
+    .navbar {
+      background: #fff;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 80px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: box-shadow 0.3s;
+    }
+    .logo img {
+      height: 60px;
+      width: auto;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+    .nav-links a {
+      color: #2d3a4a;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-links a:after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: #2e5bff;
+      transition: width .3s;
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+    }
+    .nav-links a:hover {
+      color: #2e5bff;
+    }
+    .nav-links a:hover:after {
+      width: 100%;
+    }
+    .burger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+    .burger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: #2d3a4a;
+      border-radius: 2px;
+    }
+
+    .events-title {
+      font-size: 2.7rem;
+      font-weight: 700;
+      margin: 40px 0 32px 40px;
+      letter-spacing: 2px;
+      color: #3a3a5a;
+      text-align: left;
+      text-shadow: 0 2px 8px #c7d2fe;
+      animation: fadeInUp 1s;
+    }
+
+    .events-scroll-wrapper {
+      overflow-x: auto;
+      white-space: nowrap;
+      padding-bottom: 20px;
+      margin-bottom: 40px;
+      animation: fadeInUp 1.2s;
+    }
+    .events-container {
+      display: inline-flex;
+      flex-direction: row;
+      gap: 32px;
+      max-width: unset;
+      padding: 0 20px 40px 20px;
+      transition: gap 0.3s;
+    }
+    .event-card {
+      background: #fff;
+      border-radius: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 32px 32px 24px 32px;
+      min-width: 340px;
+      max-width: 340px;
+      box-shadow: 0 6px 32px rgba(58,58,90,0.13);
+      margin-bottom: 0;
+      white-space: normal;
+      border: 2px solid #a5b4fc;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      opacity: 0;
+      animation: fadeInUp 0.9s forwards;
+      animation-delay: var(--fade-delay, 0s);
+    }
+    .event-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 12px 40px rgba(58,58,90,0.18);
+      border-color: #6366f1;
+    }
+    .event-icon img {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      object-fit: cover;
+      background: #e0e7ff;
+      box-shadow: 0 2px 8px #c7d2fe;
+      border: 1.5px solid #a5b4fc;
+      transition: transform 0.3s;
+    }
+    .event-card:hover .event-icon img {
+      transform: scale(1.08) rotate(-2deg);
+    }
+    .event-details {
+      flex: 1;
+    }
+    .event-details h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin: 0 0 4px 0;
+      color: #3730a3;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: 1px;
+    }
+    .event-type {
+      font-size: 1rem;
+      color: #6366f1;
+      margin-bottom: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .event-details p, .event-details ul {
+      font-size: 1.05rem;
+      color: #22223b;
+      margin: 0 0 10px 0;
+      line-height: 1.6;
+    }
+    .event-details ul {
+      margin: 0 0 10px 20px;
+      padding: 0;
+    }
+    .highlight {
+      font-size: 1.2em;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    @media (max-width: 1200px) {
+      .events-container {
+        gap: 20px;
+      }
+      .event-card {
+        min-width: 280px;
+        max-width: 280px;
+        padding: 24px 16px 18px 16px;
+      }
+    }
+    @media (max-width: 900px) {
+      .events-title {
+        font-size: 2rem;
+        margin-left: 20px;
+      }
+      .event-card {
+        min-width: 220px;
+        max-width: 220px;
+        padding: 16px 8px 12px 8px;
+      }
+      .event-icon img {
+        width: 40px;
+        height: 40px;
+      }
+      .events-container {
+        gap: 12px;
+      }
+      .navbar {
+        padding: 0 16px;
+      }
+    }
+    @media (max-width: 700px) {
+      .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 10px;
+      }
+      .logo img {
+        width: 100px;
+        height: 40px;
+      }
+      .nav-links {
+        gap: 12px;
+      }
+      .events-title {
+        font-size: 1.3rem;
+        margin-left: 10px;
+      }
+      .events-scroll-wrapper {
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+      }
+      .events-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        padding: 0 4px 20px 4px;
+        display: flex;
+      }
+      .event-card {
+        min-width: 90vw;
+        max-width: 98vw;
+        padding: 10px 6px;
+      }
+      .event-icon img {
+        width: 32px;
+        height: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <img src="images/newlogo.png" alt="Scholars Trust Logo" />
+    </div>
+    <nav class="nav-links" id="navLinks">
+      <a href="main.html">Home</a>
+      <a href="aboutus.html">About</a>
+      <a href="team.html">Team</a>
+      <a href="events.html">Events</a>
+      <a href="contactus.html">Contact</a>
+    </nav>
+    <div class="burger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <h1 class="events-title">LIST OF EVENTS</h1>
+  <div class="events-scroll-wrapper">
+    <div class="events-container" id="eventsContainer">
+      <div class="event-card" style="--fade-delay: 0s;">
+        <div class="event-icon">
+          <img src="https://em-content.zobj.net/source/microsoft-teams/363/camping_1f3d5-fe0f.png" alt="Camp Icon">
+        </div>
+        <div class="event-details">
+          <h2>Career Camp! <span>🎯</span></h2>
+          <div class="event-type">Event</div>
+          <p>
+            Scholars’ Trust UAE is thrilled to announce our upcoming Career Camp, on September 14th and 15th, where you’ll dive into hands-on workshops, gain insider tips from experts, and discover how to turn your ambitions into reality!
+          </p>
+          <p>
+            <span class="highlight">🔥</span> Don’t miss out on this incredible opportunity to learn, grow, and connect with like-minded individuals
+          </p>
+        </div>
+      </div>
+
+      <div class="event-card" style="--fade-delay: 0.1s;">
+        <div class="event-icon">
+          <img src="images/deepaklal.png" alt="Deepak Lal">
+        </div>
+        <div class="event-details">
+          <h2>Deepak Lal</h2>
+          <div class="event-type">Finance</div>
+          <ul>
+            <li>B.Tech in Petroleum Engineering from IIT Dhanbad</li>
+            <li>Chief Investment Officer in Grey-Sells and Ex-VP, Business Management, Corporate and Investment Banking, First Abu Dhabi Bank</li>
+            <li>Vice President – Corporate Marketing for First Gulf Bank for 5 years</li>
+          </ul>
+          <p>
+            Hello Scholars' Trust UAE members,<br>
+            I'm Deepak Lal, the Chief Investment Officer at Grey-Sells. With over two decades of experience in finance and banking, I'm excited to share my journey and insights with you!
+          </p>
+        </div>
+      </div>
+
+      <div class="event-card" style="--fade-delay: 0.2s;">
+        <div class="event-icon">
+          <img src="images/marc.png" alt="Marc Leo">
+        </div>
+        <div class="event-details">
+          <h2>Marc Leo</h2>
+          <div class="event-type">Math and Economics</div>
+          <ul>
+            <li>Bocconi University, Milan - Bachelors in International Politics and Government (with economics major)</li>
+          </ul>
+          <p>
+            Hey guys!<br>
+            My name is Marc Leo and I used to study at DPS Dubai before enrolling at Bocconi. I aspire to be an academic, and hopefully become an economics or political science professor. I would also love to work for the UN!<br>One philosophy I try to live by is 'good things take time, great things take longer'. I try not to rush myself, knowing that the best things in life come only with time.
+          </p>
+        </div>
+      </div>
+
+      <div class="event-card" style="--fade-delay: 0.3s;">
+        <div class="event-icon">
+          <img src="images/sahil.png" alt="Sahil Saxena">
+        </div>
+        <div class="event-details">
+          <h2>Sahil Saxena</h2>
+          <div class="event-type">Computer Science</div>
+          <ul>
+            <li>University of Manchester (Computer Science)</li>
+            <li>
+              Hello Guys! My name is Sahil Saxena. I am studying computer science at the University of Manchester and have graduated from Delhi Private School Dubai. My current goals are to become a software engineer with a strong interest in AI and machine learning.<br>
+              Philosophical quote: “The magic you are looking for is in the work you are avoiding”
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="event-card" style="--fade-delay: 0.4s;">
+        <div class="event-icon">
+          <img src="images/ravina.png" alt="Ravina Seenivasan">
+        </div>
+        <div class="event-details">
+          <h2>Ravina Seenivasan</h2>
+          <div class="event-type">Medicine</div>
+          <ul>
+            <li>Queens University Belfast - Medicine</li>
+            <li>
+              Hi! I’m Ravina Seenivasan, currently a second year medical student at Queens University Belfast, UK. Excited to meet and interact with everyone!
+            </li>
+            <li>
+              One thing about me that I always stand by is live in the moment. Have fun and enjoy, don’t let responsibilities burden you cause it’s the memories that stay.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="event-card" style="--fade-delay: 0.5s;">
+        <div class="event-icon">
+          <img src="images/priyanka.png" alt="Priyanka Naidu">
+        </div>
+        <div class="event-details">
+          <h2>Priyanka Naidu</h2>
+          <div class="event-type">Medicine</div>
+          <ul>
+            <li>Charles University, First Faculty of Medicine. In my final year of MBBS program</li>
+            <li>
+              Hello! My name is Priyanka Naidu and I study medicine in Charles University, First Faculty of Medicine in Prague. I did my schooling in Our Own English High School and in Delhi Private School Dubai. I am really grateful to get the opportunity to do medicine in a lovely place like Czech Republic. And I’ll be more than happy to guide future medical students through my journey and experiences.
+            </li>
+            <li>
+              One thing I strongly believe in is that it’s important that we as medical students grow together and help each other reach the place we all want to be in one day.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="event-card" style="--fade-delay: 0.6s;">
+        <div class="event-icon">
+          <img src="images/saniya.png" alt="Saniya Bhatia">
+        </div>
+        <div class="event-details">
+          <h2>Saniya Bhatia</h2>
+          <div class="event-type">Psychology</div>
+          <ul>
+            <li>Cardiff University - BSc Psychology</li>
+            <li>
+              Hi everyone my name is Saniya! And I'm a first year student currently pursuing my bachelors in psychology at Cardiff University. I’m truly passionate about what I study and my goal is to help people be cognizant of mental health and psychology & emotions that truly make us human!<br>
+              The one philosophy that I go by is “You become what you believe”
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="event-card" style="--fade-delay: 0.7s;">
+        <div class="event-icon">
+          <img src="images/seno.png" alt="Seno Sanjeev">
+        </div>
+        <div class="event-details">
+          <h2>Seno Sanjeev John</h2>
+          <div class="event-type">SAT Training Workshop</div>
+          <ul>
+            <li>Incoming Freshman of Computer Science at Purdue University</li>
+            <li>
+              Seno Sanjeev is passionate about helping students excel in standardized testing. As the founder and lead instructor of Seno's SAT Training Workshop, he has guided numerous students to achieve their dream SAT scores through interactive sessions and personalized strategies.
+            </li>
+            <li>
+              <strong>About the Workshop:</strong> Seno’s SAT Training Workshop offers comprehensive SAT prep, focusing on problem-solving, test-taking strategies, and building confidence. The sessions are engaging, student-centered, and tailored to individual needs.
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/seno-sanjeev-353764279/" target="_blank" style="color:#2e5bff;text-decoration:underline;">Connect on LinkedIn</a>
+            </li>
+          </ul>
+          <div style="width:100%;display:flex;justify-content:center;margin-top:18px;">
+            <img src="images/senoworkshop.png" alt="Seno's SAT Workshop" style="width:90%;max-width:270px;border-radius:22px;box-shadow:0 4px 24px rgba(46,91,255,0.10);border:2px solid #e0e7ff;">
+          </div>
+        </div>
+      </div>
+
+      <div class="event-card" style="--fade-delay: 0.8s;">
+        <div class="event-icon">
+          <img src="images/elisa.png" alt="Elisa See">
+        </div>
+        <div class="event-details">
+          <h2>Elisa See</h2>
+          <div class="event-type">Harvard College | Government & Computer Science</div>
+          <ul>
+            <li>Incoming freshman at Harvard College studying government & computer science</li>
+            <li>
+              Completed the IB Diploma; HLs: Chemistry, Math AA, History, Global Politics
+            </li>
+            <li>
+              1600 Digital SAT
+            </li>
+            <li>
+              Follow my TikTok <strong>@elisas_y</strong> for vlogs at Harvard, LinkedIn/networking/internship, IBDP, SAT, and college app tips
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/elisa-see-413528255/" target="_blank" style="color:#2e5bff;text-decoration:underline;">LinkedIn: Elisa See</a>
+            </li>
+          </ul>
+          <div style="width:100%;display:flex;justify-content:center;margin-top:18px;">
+            <img src="images/elisaworkshop.png" alt="Elisa Workshop" style="width:90%;max-width:270px;border-radius:22px;box-shadow:0 4px 24px rgba(46,91,255,0.10);border:2px solid #e0e7ff;">
+          </div>
+        </div>
+      </div>
+      <!-- Add more event cards here as needed -->
+    </div>
+  </div>
+  <script>
+    // Simple burger menu toggle for mobile
+    function toggleMenu() {
+      const nav = document.getElementById('navLinks');
+      nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    // Fade-in animation for event cards with staggered delay
+    window.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.event-card');
+      cards.forEach((card, i) => {
+        card.style.animationDelay = (i * 0.12) + 's';
+        card.style.opacity = 1;
+      });
+    });
+  </script>
+</body>
+</html>
